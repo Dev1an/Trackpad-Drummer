@@ -17,6 +17,10 @@ class ViewController: NSViewController {
 	var fingerViews: Set<NSBox>!
 	var visibleFingers = [Int: NSBox]()
 	
+	@IBOutlet weak var region1: NSBox!
+	@IBOutlet weak var region2: NSBox!
+	@IBOutlet weak var region3: NSBox!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		fingerViews = [fingerView1, fingerView2, fingerView3, fingerView4, fingerView5]
@@ -37,12 +41,22 @@ class ViewController: NSViewController {
 	
 	override func touchesBegan(with event: NSEvent) {
 		for touch in event.touches(matching: .began, in: nil) {
+			let x = (view.frame.width - fingerView1.frame.width) * touch.normalizedPosition.x
+			let y = (view.frame.height - fingerView1.frame.height) * touch.normalizedPosition.y
+			if region1.hitTest(NSPoint(x: x, y: y)) != nil {
+				playDrum1()
+			} else if region2.hitTest(NSPoint(x: x, y: y)) != nil {
+				playDrum2()
+			} else if region3.hitTest(NSPoint(x: x, y: y)) != nil {
+				playDrum3()
+			}
+			
 			if let fingerView = fingerViews.subtracting(visibleFingers.values).first {
 				visibleFingers[touch.identity.hash] = fingerView
 				fingerView.isTransparent = false
 				
-				fingerView.frame.origin.x = (view.frame.width - fingerView.frame.width) * touch.normalizedPosition.x
-				fingerView.frame.origin.y = (view.frame.height - fingerView.frame.height) * touch.normalizedPosition.y
+				fingerView.frame.origin.x = x
+				fingerView.frame.origin.y = y
 			}
 		}
 	}

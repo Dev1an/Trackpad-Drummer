@@ -43,11 +43,12 @@ class ViewController: NSViewController {
 		for touch in event.touches(matching: .began, in: nil) {
 			let x = (view.frame.width - fingerView1.frame.width) * touch.normalizedPosition.x
 			let y = (view.frame.height - fingerView1.frame.height) * touch.normalizedPosition.y
-			if region1.hitTest(NSPoint(x: x, y: y)) != nil {
+			let point = NSPoint(x: x, y: y)
+			if region1.hitTest(point) != nil {
 				playDrum1()
-			} else if region2.hitTest(NSPoint(x: x, y: y)) != nil {
+			} else if region2.hitTest(point) != nil {
 				playDrum2()
-			} else if region3.hitTest(NSPoint(x: x, y: y)) != nil {
+			} else if region3.hitTest(point) != nil {
 				playDrum3()
 			}
 			

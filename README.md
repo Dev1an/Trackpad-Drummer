@@ -1,3 +1,5 @@
+Use your trackpad as drumpad.
+
 ## Installation
 Download the [latest release](https://github.com/Dev1an/Trackpad-Drummer/releases/latest).
 

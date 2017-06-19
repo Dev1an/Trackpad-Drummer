@@ -686,8 +686,8 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                    <window key="window" title="Drumpad" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -705,91 +705,97 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Magic_Drumpad" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="284"/>
+                        <rect key="frame" x="0.0" y="0.0" width="481" height="284"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="UlH-Fm-SOT">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="137"/>
+                            <box wantsLayer="YES" boxType="custom" borderWidth="0.0" cornerRadius="3" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="UlH-Fm-SOT">
+                                <rect key="frame" x="4" y="4" width="473" height="138"/>
                                 <view key="contentView" id="iLk-pr-yGu">
-                                    <rect key="frame" x="1" y="1" width="478" height="135"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="473" height="138"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
+                                <color key="borderColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.87067121479999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="fillColor" red="0.0" green="0.0" blue="0.0" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="sRGB"/>
                             </box>
-                            <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="i6D-u0-ncL">
-                                <rect key="frame" x="245" y="145" width="235" height="139"/>
+                            <box wantsLayer="YES" boxType="custom" borderWidth="0.0" cornerRadius="3" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="i6D-u0-ncL">
+                                <rect key="frame" x="243" y="146" width="234" height="138"/>
                                 <view key="contentView" id="51Q-eU-RV9">
-                                    <rect key="frame" x="1" y="1" width="233" height="137"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="234" height="138"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
+                                <color key="borderColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
+                                <color key="fillColor" red="0.0" green="0.0" blue="0.0" alpha="0.066846390845070422" colorSpace="calibratedRGB"/>
                             </box>
-                            <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="eAi-lg-W3O">
-                                <rect key="frame" x="0.0" y="145" width="234" height="139"/>
-                                <view key="contentView" ambiguous="YES" id="Bdt-aR-xFc">
-                                    <rect key="frame" x="1" y="1" width="232" height="137"/>
+                            <box wantsLayer="YES" boxType="custom" borderWidth="0.0" cornerRadius="3" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="eAi-lg-W3O">
+                                <rect key="frame" x="4" y="146" width="235" height="138"/>
+                                <view key="contentView" id="Bdt-aR-xFc">
+                                    <rect key="frame" x="0.0" y="0.0" width="235" height="138"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
+                                <color key="borderColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
+                                <color key="fillColor" red="0.0" green="0.0" blue="0.0" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="sRGB"/>
                             </box>
-                            <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="20" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="der-H1-t4P">
-                                <rect key="frame" x="10" y="129" width="40" height="40"/>
+                            <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="12" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="der-H1-t4P">
+                                <rect key="frame" x="48" y="102" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" ambiguous="YES" id="RrE-EP-fj4">
-                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <color key="fillColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
                             </box>
-                            <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="20" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gw6-IW-t3a">
-                                <rect key="frame" x="70" y="129" width="40" height="40"/>
+                            <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="12" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gw6-IW-t3a">
+                                <rect key="frame" x="108" y="127" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" ambiguous="YES" id="sYI-KM-RnC">
-                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <color key="fillColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
                             </box>
-                            <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="20" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5L-47-BGF">
-                                <rect key="frame" x="130" y="129" width="40" height="40"/>
+                            <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="12" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5L-47-BGF">
+                                <rect key="frame" x="168" y="152" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" ambiguous="YES" id="tF9-aB-APH">
-                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <color key="fillColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
                             </box>
-                            <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="20" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZIC-lB-IG1">
-                                <rect key="frame" x="190" y="129" width="40" height="40"/>
+                            <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="12" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZIC-lB-IG1">
+                                <rect key="frame" x="228" y="150" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" ambiguous="YES" id="1po-6S-oJV">
-                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <color key="fillColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
                             </box>
-                            <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="20" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q9h-Xm-FBj">
-                                <rect key="frame" x="250" y="129" width="40" height="40"/>
+                            <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="12" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q9h-Xm-FBj">
+                                <rect key="frame" x="287" y="138" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" ambiguous="YES" id="oeV-5B-eSh">
-                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <color key="fillColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
                             </box>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="eAi-lg-W3O" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="044-u6-hhP"/>
-                            <constraint firstAttribute="bottom" secondItem="UlH-Fm-SOT" secondAttribute="bottom" id="5u0-D8-9nK"/>
+                            <constraint firstItem="eAi-lg-W3O" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="4" id="044-u6-hhP"/>
+                            <constraint firstAttribute="bottom" secondItem="UlH-Fm-SOT" secondAttribute="bottom" constant="4" id="5u0-D8-9nK"/>
                             <constraint firstItem="eAi-lg-W3O" firstAttribute="width" secondItem="51Q-eU-RV9" secondAttribute="width" id="B2n-iQ-ZZ2"/>
                             <constraint firstItem="i6D-u0-ncL" firstAttribute="width" secondItem="Bdt-aR-xFc" secondAttribute="width" id="EFp-HE-9cb"/>
-                            <constraint firstAttribute="trailing" secondItem="UlH-Fm-SOT" secondAttribute="trailing" id="FMu-9V-LKG"/>
-                            <constraint firstItem="UlH-Fm-SOT" firstAttribute="top" secondItem="Bdt-aR-xFc" secondAttribute="bottom" constant="8" id="GSy-aU-qAB"/>
-                            <constraint firstItem="UlH-Fm-SOT" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="HHC-Jo-Vyw"/>
+                            <constraint firstAttribute="trailing" secondItem="UlH-Fm-SOT" secondAttribute="trailing" constant="4" id="FMu-9V-LKG"/>
+                            <constraint firstItem="UlH-Fm-SOT" firstAttribute="top" secondItem="Bdt-aR-xFc" secondAttribute="bottom" constant="4" id="GSy-aU-qAB"/>
+                            <constraint firstItem="UlH-Fm-SOT" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="4" id="HHC-Jo-Vyw"/>
                             <constraint firstItem="UlH-Fm-SOT" firstAttribute="height" secondItem="51Q-eU-RV9" secondAttribute="height" id="Jii-Jz-woV"/>
-                            <constraint firstItem="i6D-u0-ncL" firstAttribute="leading" secondItem="Bdt-aR-xFc" secondAttribute="trailing" constant="8" id="VHZ-m1-BNd"/>
-                            <constraint firstItem="UlH-Fm-SOT" firstAttribute="top" secondItem="i6D-u0-ncL" secondAttribute="bottom" constant="8" id="ePs-1h-3Z5"/>
-                            <constraint firstAttribute="trailing" secondItem="i6D-u0-ncL" secondAttribute="trailing" id="i6c-TX-96F"/>
+                            <constraint firstItem="i6D-u0-ncL" firstAttribute="leading" secondItem="Bdt-aR-xFc" secondAttribute="trailing" constant="4" id="VHZ-m1-BNd"/>
+                            <constraint firstItem="UlH-Fm-SOT" firstAttribute="top" secondItem="i6D-u0-ncL" secondAttribute="bottom" constant="4" id="ePs-1h-3Z5"/>
+                            <constraint firstAttribute="trailing" secondItem="i6D-u0-ncL" secondAttribute="trailing" constant="4" id="i6c-TX-96F"/>
                             <constraint firstItem="eAi-lg-W3O" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="kmc-m9-RZC"/>
                             <constraint firstItem="i6D-u0-ncL" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="uF5-gg-nsR"/>
-                            <constraint firstItem="UlH-Fm-SOT" firstAttribute="top" secondItem="eAi-lg-W3O" secondAttribute="bottom" constant="8" id="xLD-Y5-DI7"/>
+                            <constraint firstItem="UlH-Fm-SOT" firstAttribute="top" secondItem="eAi-lg-W3O" secondAttribute="bottom" constant="4" id="xLD-Y5-DI7"/>
                         </constraints>
                     </view>
                     <connections>
@@ -805,7 +811,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75.5" y="680"/>
         </scene>
     </scenes>
 </document>

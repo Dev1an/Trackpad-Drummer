@@ -21,6 +21,8 @@ class ViewController: NSViewController {
 	@IBOutlet weak var region2: NSBox!
 	@IBOutlet weak var region3: NSBox!
 	
+	var size: CGFloat = 25
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		fingerViews = [fingerView1, fingerView2, fingerView3, fingerView4, fingerView5]
@@ -31,7 +33,7 @@ class ViewController: NSViewController {
 	}
 	
 	override func pressureChange(with event: NSEvent) {
-		let size = CGFloat(event.pressure) * 20 + 25
+		size = CGFloat(event.pressure) * 20 + 25
 		for fingerView in fingerViews {
 			fingerView.frame.size.width = size
 			fingerView.frame.size.height = size
@@ -41,15 +43,25 @@ class ViewController: NSViewController {
 	
 	override func touchesBegan(with event: NSEvent) {
 		for touch in event.touches(matching: .began, in: nil) {
-			let x = (view.frame.width - fingerView1.frame.width) * touch.normalizedPosition.x
-			let y = (view.frame.height - fingerView1.frame.height) * touch.normalizedPosition.y
-			let point = NSPoint(x: x, y: y)
-			if region1.hitTest(point) != nil {
-				playDrum1()
-			} else if region2.hitTest(point) != nil {
-				playDrum2()
-			} else if region3.hitTest(point) != nil {
-				playDrum3()
+			let x = (view.frame.width - size) * touch.normalizedPosition.x
+			let y = (view.frame.height - size) * touch.normalizedPosition.y
+			if let currentRegion = region(under: NSPoint(x: x + size/2, y: y + size/2)) {
+				let animation = CABasicAnimation()
+				animation.fromValue = #colorLiteral(red: 0, green: 0.2304720325, blue: 0.4817243304, alpha: 1).cgColor
+				animation.toValue = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.07).cgColor
+				animation.duration = 0.18
+				currentRegion.layer?.add(animation, forKey: "backgroundColor")
+				
+				switch currentRegion {
+				case region1:
+					playDrum1()
+				case region2:
+					playDrum2()
+				case region3:
+					playDrum3()
+				default:
+					break
+				}
 			}
 			
 			if let fingerView = fingerViews.subtracting(visibleFingers.values).first {
@@ -62,11 +74,23 @@ class ViewController: NSViewController {
 		}
 	}
 	
+	func region(under point: NSPoint) -> NSBox? {
+		if region1.hitTest(point) != nil {
+			return region1
+		} else if region2.hitTest(point) != nil {
+			return region2
+		} else if region3.hitTest(point) != nil {
+			return region3
+		} else {
+			return nil
+		}
+	}
+	
 	override func touchesMoved(with event: NSEvent) {
 		for touch in event.touches(matching: .moved, in: nil) {
 			if let fingerView = visibleFingers[touch.identity.hash] {
-				fingerView.frame.origin.x = (view.frame.width - fingerView.frame.width) * touch.normalizedPosition.x
-				fingerView.frame.origin.y = (view.frame.height - fingerView.frame.height) * touch.normalizedPosition.y
+				fingerView.frame.origin.x = (view.frame.width - size) * touch.normalizedPosition.x
+				fingerView.frame.origin.y = (view.frame.height - size) * touch.normalizedPosition.y
 			}
 		}
 	}
@@ -77,4 +101,3 @@ class ViewController: NSViewController {
 		}
 	}
 }
-

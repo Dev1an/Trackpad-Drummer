@@ -1,4 +1,4 @@
-Use your trackpad as drumpad.
+<p align=center>Use your trackpad as drumpad.</p>
 
 ![drumpad](drumpad.gif)
 

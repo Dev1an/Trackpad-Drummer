@@ -41,6 +41,18 @@ class ViewController: NSViewController {
 		}
 	}
 	
+	func region(under point: NSPoint) -> NSBox? {
+		if region1.hitTest(point) != nil {
+			return region1
+		} else if region2.hitTest(point) != nil {
+			return region2
+		} else if region3.hitTest(point) != nil {
+			return region3
+		} else {
+			return nil
+		}
+	}
+	
 	override func touchesBegan(with event: NSEvent) {
 		for touch in event.touches(matching: .began, in: nil) {
 			let x = (view.frame.width - size) * touch.normalizedPosition.x
@@ -72,18 +84,8 @@ class ViewController: NSViewController {
 				fingerView.frame.origin.y = y
 			}
 		}
-	}
-	
-	func region(under point: NSPoint) -> NSBox? {
-		if region1.hitTest(point) != nil {
-			return region1
-		} else if region2.hitTest(point) != nil {
-			return region2
-		} else if region3.hitTest(point) != nil {
-			return region3
-		} else {
-			return nil
-		}
+		
+		NSCursor.setHiddenUntilMouseMoves(true)
 	}
 	
 	override func touchesMoved(with event: NSEvent) {

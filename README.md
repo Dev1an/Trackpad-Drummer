@@ -1,10 +1,12 @@
 Use your trackpad as drumpad.
 
+![drumpad](/Users/damiaan/Documents/Projecten/Magic Drumpad/drumpad.gif)
+
 ## Installation
 Download the [latest release](https://github.com/Dev1an/Trackpad-Drummer/releases/latest).
 
 ## Compatibility
 
 Supported trackpads:
- - Any macbook's trackpad
- - Magic trackpad 2
+- Any macbook's trackpad
+- Magic trackpad 2

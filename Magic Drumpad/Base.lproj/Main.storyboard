@@ -742,7 +742,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <color key="fillColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                <color key="fillColor" red="0.9836958646774292" green="0.9836958646774292" blue="0.9836958646774292" alpha="0.60332306338028174" colorSpace="calibratedRGB"/>
                             </box>
                             <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="12" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gw6-IW-t3a">
                                 <rect key="frame" x="108" y="127" width="25" height="25"/>
@@ -751,7 +751,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <color key="fillColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                <color key="fillColor" red="0.98369586470000003" green="0.98369586470000003" blue="0.98369586470000003" alpha="0.60332306339999997" colorSpace="calibratedRGB"/>
                             </box>
                             <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="12" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5L-47-BGF">
                                 <rect key="frame" x="168" y="152" width="25" height="25"/>
@@ -760,7 +760,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <color key="fillColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                <color key="fillColor" red="0.98369586470000003" green="0.98369586470000003" blue="0.98369586470000003" alpha="0.60332306339999997" colorSpace="calibratedRGB"/>
                             </box>
                             <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="12" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZIC-lB-IG1">
                                 <rect key="frame" x="228" y="150" width="25" height="25"/>
@@ -769,7 +769,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <color key="fillColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                <color key="fillColor" red="0.98369586470000003" green="0.98369586470000003" blue="0.98369586470000003" alpha="0.60332306339999997" colorSpace="calibratedRGB"/>
                             </box>
                             <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="12" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q9h-Xm-FBj">
                                 <rect key="frame" x="287" y="138" width="25" height="25"/>
@@ -778,7 +778,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <color key="fillColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                <color key="fillColor" red="0.98369586470000003" green="0.98369586470000003" blue="0.98369586470000003" alpha="0.60332306339999997" colorSpace="calibratedRGB"/>
                             </box>
                         </subviews>
                         <constraints>

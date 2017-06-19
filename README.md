@@ -1,6 +1,6 @@
-Use your trackpad as drumpad.
+<p align=center>Use your trackpad as drumpad.</p>
 
-![drumpad](/Users/damiaan/Documents/Projecten/Magic Drumpad/drumpad.gif)
+![drumpad](drumpad.gif)
 
 ## Installation
 Download the [latest release](https://github.com/Dev1an/Trackpad-Drummer/releases/latest).

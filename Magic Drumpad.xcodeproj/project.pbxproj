@@ -34,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		741F36A21EF86BC800F65538 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		74447AAD1EF6AD7400C428B9 /* Magic Drumpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magic Drumpad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74447AB01EF6AD7400C428B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74447AB21EF6AD7400C428B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +79,7 @@
 		74447AA41EF6AD7400C428B9 = {
 			isa = PBXGroup;
 			children = (
+				741F36A21EF86BC800F65538 /* README.md */,
 				74447AAF1EF6AD7400C428B9 /* Magic Drumpad */,
 				74447AC21EF6AD7400C428B9 /* Magic DrumpadTests */,
 				74447ACD1EF6AD7400C428B9 /* Magic DrumpadUITests */,

@@ -39,7 +39,6 @@ class ViewController: NSViewController {
 		
 		view.acceptsTouchEvents = true
 		view.pressureConfiguration = NSPressureConfiguration(pressureBehavior: .primaryClick)
-		// Do any additional setup after loading the view.
 	}
 	
 	override func pressureChange(with event: NSEvent) {

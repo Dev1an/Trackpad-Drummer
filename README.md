@@ -7,9 +7,9 @@ Download the [latest release](https://github.com/Dev1an/Trackpad-Drummer/release
 
 ## Compatibility
 
-Supported trackpads:
-- Any macbook's trackpad
-- Magic trackpad 2
+Testet trackpads:
+- [x] MacBook Pro 15" Late 2013 (internal trackpad)
+- [x] Magic trackpad 2
 
 ## Technical
 - Written completely in Swift.
@@ -17,5 +17,5 @@ Supported trackpads:
 
 ### Where to start
 - User interface: [Main.storyboard](Magic%20Drumpad/Base.lproj/Main.storyboard)
-- Application logic: [Viewcontroller.swift](Magic%20Drumpad/ViewController.swift)
+- Application logic: [ViewController.swift](Magic%20Drumpad/ViewController.swift)
 - Audio player: [ConcurrentPlayer.swift](Magic%20Drumpad/ConcurrentPlayer.swift)

@@ -13,7 +13,7 @@
 		74447AB81EF6AD7400C428B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74447AB61EF6AD7400C428B9 /* Main.storyboard */; };
 		74447AC41EF6AD7400C428B9 /* Magic_DrumpadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74447AC31EF6AD7400C428B9 /* Magic_DrumpadTests.swift */; };
 		74447ACF1EF6AD7400C428B9 /* Magic_DrumpadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74447ACE1EF6AD7400C428B9 /* Magic_DrumpadUITests.swift */; };
-		7489205F1EF701800098ABDF /* Drummer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7489205E1EF701800098ABDF /* Drummer.swift */; };
+		7489205F1EF701800098ABDF /* ConcurrentPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7489205E1EF701800098ABDF /* ConcurrentPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,7 @@
 		74447ACA1EF6AD7400C428B9 /* Magic DrumpadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Magic DrumpadUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74447ACE1EF6AD7400C428B9 /* Magic_DrumpadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magic_DrumpadUITests.swift; sourceTree = "<group>"; };
 		74447AD01EF6AD7400C428B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7489205E1EF701800098ABDF /* Drummer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drummer.swift; sourceTree = "<group>"; };
+		7489205E1EF701800098ABDF /* ConcurrentPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				74447AB01EF6AD7400C428B9 /* AppDelegate.swift */,
-				7489205E1EF701800098ABDF /* Drummer.swift */,
+				7489205E1EF701800098ABDF /* ConcurrentPlayer.swift */,
 				74447AB21EF6AD7400C428B9 /* ViewController.swift */,
 				74447AB41EF6AD7400C428B9 /* Assets.xcassets */,
 				74447AB61EF6AD7400C428B9 /* Main.storyboard */,
@@ -259,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7489205F1EF701800098ABDF /* Drummer.swift in Sources */,
+				7489205F1EF701800098ABDF /* ConcurrentPlayer.swift in Sources */,
 				74447AB31EF6AD7400C428B9 /* ViewController.swift in Sources */,
 				74447AB11EF6AD7400C428B9 /* AppDelegate.swift in Sources */,
 			);

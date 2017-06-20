@@ -7,7 +7,6 @@
 //
 
 import AVFoundation
-import AppKit
 
 class ConcurrentPlayer {
 	private var players = [AVAudioPlayer]()

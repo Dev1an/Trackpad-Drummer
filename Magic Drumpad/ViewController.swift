@@ -66,7 +66,6 @@ class ViewController: NSViewController {
 			let y = (view.frame.height - fingerSize) * touch.normalizedPosition.y
 			if let currentRegion = region(under: NSPoint(x: x + fingerSize/2, y: y + fingerSize/2)) {
 				drummers[currentRegion]?.play()
-				
 				currentRegion.layer?.add(hitAnimation, forKey: "backgroundColor")
 			}
 			

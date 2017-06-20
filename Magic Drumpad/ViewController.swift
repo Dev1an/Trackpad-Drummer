@@ -23,9 +23,16 @@ class ViewController: NSViewController {
 	
 	var size: CGFloat = 25
 	
+	var drummers = [NSBox: ConcurrentPlayer]()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		fingerViews = [fingerView1, fingerView2, fingerView3, fingerView4, fingerView5]
+		drummers =  [
+			region1: ConcurrentPlayer(withSound: NSDataAsset(name: .init("drum1"))!.data),
+			region2: ConcurrentPlayer(withSound: NSDataAsset(name: .init("drum2"))!.data),
+			region3: ConcurrentPlayer(withSound: NSDataAsset(name: .init("drum3"))!.data)
+		]
 		
 		view.acceptsTouchEvents = true
 		view.pressureConfiguration = NSPressureConfiguration(pressureBehavior: .primaryClick)
@@ -58,22 +65,13 @@ class ViewController: NSViewController {
 			let x = (view.frame.width - size) * touch.normalizedPosition.x
 			let y = (view.frame.height - size) * touch.normalizedPosition.y
 			if let currentRegion = region(under: NSPoint(x: x + size/2, y: y + size/2)) {
-				let animation = CABasicAnimation()
-				animation.fromValue = #colorLiteral(red: 0, green: 0.2304720325, blue: 0.4817243304, alpha: 1).cgColor
-				animation.toValue = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.07).cgColor
-				animation.duration = 0.18
-				currentRegion.layer?.add(animation, forKey: "backgroundColor")
+				drummers[currentRegion]?.play()
 				
-				switch currentRegion {
-				case region1:
-					playDrum1()
-				case region2:
-					playDrum2()
-				case region3:
-					playDrum3()
-				default:
-					break
-				}
+				let animation = CABasicAnimation()
+				animation.fromValue = #colorLiteral(red: 0, green: 0.2220619044, blue: 0.4813616071, alpha: 0.3024042694).cgColor
+				animation.toValue = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.07).cgColor
+				animation.duration = 0.2
+				currentRegion.layer?.add(animation, forKey: "backgroundColor")
 			}
 			
 			if let fingerView = fingerViews.subtracting(visibleFingers.values).first {

@@ -14,15 +14,14 @@ class ViewController: NSViewController {
 	@IBOutlet weak var fingerView3: NSBox!
 	@IBOutlet weak var fingerView4: NSBox!
 	@IBOutlet weak var fingerView5: NSBox!
-	var fingerViews: Set<NSBox>!
-	var visibleFingers = [Int: NSBox]()
-	
 	@IBOutlet weak var region1: NSBox!
 	@IBOutlet weak var region2: NSBox!
 	@IBOutlet weak var region3: NSBox!
 	
 	var drummers = [NSBox: ConcurrentPlayer]()
 	var fingerSize: CGFloat = 25
+	var fingerViews: Set<NSBox>!
+	var visibleFingers = [Int: NSBox]()
 	let hitAnimation = CABasicAnimation()
 	
 	override func viewDidLoad() {

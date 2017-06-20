@@ -21,9 +21,9 @@ class ViewController: NSViewController {
 	@IBOutlet weak var region2: NSBox!
 	@IBOutlet weak var region3: NSBox!
 	
-	var size: CGFloat = 25
-	
 	var drummers = [NSBox: ConcurrentPlayer]()
+	var fingerSize: CGFloat = 25
+	let hitAnimation = CABasicAnimation()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -34,44 +34,41 @@ class ViewController: NSViewController {
 			region3: ConcurrentPlayer(withSound: NSDataAsset(name: .init("drum3"))!.data)
 		]
 		
+		hitAnimation.fromValue = #colorLiteral(red: 0, green: 0.2220619044, blue: 0.4813616071, alpha: 0.3024042694).cgColor
+		hitAnimation.toValue = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.07).cgColor
+		hitAnimation.duration = 0.2
+		
 		view.acceptsTouchEvents = true
 		view.pressureConfiguration = NSPressureConfiguration(pressureBehavior: .primaryClick)
 		// Do any additional setup after loading the view.
 	}
 	
 	override func pressureChange(with event: NSEvent) {
-		size = CGFloat(event.pressure) * 20 + 25
+		fingerSize = CGFloat(event.pressure) * 20 + 25
 		for fingerView in fingerViews {
-			fingerView.frame.size.width = size
-			fingerView.frame.size.height = size
-			fingerView.cornerRadius = size/2
+			fingerView.frame.size.width = fingerSize
+			fingerView.frame.size.height = fingerSize
+			fingerView.cornerRadius = fingerSize/2
 		}
 	}
 	
 	func region(under point: NSPoint) -> NSBox? {
-		if region1.hitTest(point) != nil {
-			return region1
-		} else if region2.hitTest(point) != nil {
-			return region2
-		} else if region3.hitTest(point) != nil {
-			return region3
-		} else {
-			return nil
+		for region in drummers.keys {
+			if region.hitTest(point) != nil {
+				return region
+			}
 		}
+		return nil
 	}
 	
 	override func touchesBegan(with event: NSEvent) {
 		for touch in event.touches(matching: .began, in: nil) {
-			let x = (view.frame.width - size) * touch.normalizedPosition.x
-			let y = (view.frame.height - size) * touch.normalizedPosition.y
-			if let currentRegion = region(under: NSPoint(x: x + size/2, y: y + size/2)) {
+			let x = (view.frame.width - fingerSize) * touch.normalizedPosition.x
+			let y = (view.frame.height - fingerSize) * touch.normalizedPosition.y
+			if let currentRegion = region(under: NSPoint(x: x + fingerSize/2, y: y + fingerSize/2)) {
 				drummers[currentRegion]?.play()
 				
-				let animation = CABasicAnimation()
-				animation.fromValue = #colorLiteral(red: 0, green: 0.2220619044, blue: 0.4813616071, alpha: 0.3024042694).cgColor
-				animation.toValue = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.07).cgColor
-				animation.duration = 0.2
-				currentRegion.layer?.add(animation, forKey: "backgroundColor")
+				currentRegion.layer?.add(hitAnimation, forKey: "backgroundColor")
 			}
 			
 			if let fingerView = fingerViews.subtracting(visibleFingers.values).first {
@@ -89,8 +86,8 @@ class ViewController: NSViewController {
 	override func touchesMoved(with event: NSEvent) {
 		for touch in event.touches(matching: .moved, in: nil) {
 			if let fingerView = visibleFingers[touch.identity.hash] {
-				fingerView.frame.origin.x = (view.frame.width - size) * touch.normalizedPosition.x
-				fingerView.frame.origin.y = (view.frame.height - size) * touch.normalizedPosition.y
+				fingerView.frame.origin.x = (view.frame.width - fingerSize) * touch.normalizedPosition.x
+				fingerView.frame.origin.y = (view.frame.height - fingerSize) * touch.normalizedPosition.y
 			}
 		}
 	}

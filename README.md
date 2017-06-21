@@ -3,7 +3,7 @@
 ![drumpad](drumpad.gif)
 
 ## Installation
-Download the [latest release](https://github.com/Dev1an/Trackpad-Drummer/releases/latest).
+Download the [latest release](https://github.com/Dev1an/Trackpad-Drummer/releases/latest). If you like the project, click on the star button on the top right of this page.
 
 ## Compatibility
 

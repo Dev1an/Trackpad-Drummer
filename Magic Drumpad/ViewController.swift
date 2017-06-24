@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AVFoundation
 
 class ViewController: NSViewController {
 	@IBOutlet weak var fingerView1: NSBox!
@@ -23,11 +24,18 @@ class ViewController: NSViewController {
 	var fingerViews: Set<NSBox>!
 	var visibleFingers = [Int: NSBox]()
 	let hitAnimation = CABasicAnimation()
+	let hardHitAnimation = CABasicAnimation()
+	var recorder = try? AVAudioRecorder(url: URL(fileURLWithPath: "/dev/null"), settings: [
+		AVSampleRateKey: 4000.0,
+		AVFormatIDKey: Int(kAudioFormatAppleLossless),
+		AVNumberOfChannelsKey: 1,
+		AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+	])
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		fingerViews = [fingerView1, fingerView2, fingerView3, fingerView4, fingerView5]
-		drummers =  [
+		drummers = [
 			region1: ConcurrentPlayer(withSound: NSDataAsset(name: .init("drum1"))!.data),
 			region2: ConcurrentPlayer(withSound: NSDataAsset(name: .init("drum2"))!.data),
 			region3: ConcurrentPlayer(withSound: NSDataAsset(name: .init("drum3"))!.data)
@@ -36,9 +44,17 @@ class ViewController: NSViewController {
 		hitAnimation.fromValue = #colorLiteral(red: 0, green: 0.2220619044, blue: 0.4813616071, alpha: 0.3024042694).cgColor
 		hitAnimation.toValue = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.07).cgColor
 		hitAnimation.duration = 0.2
+		hardHitAnimation.fromValue = #colorLiteral(red: 0.7373046875, green: 0, blue: 0, alpha: 0.5850022007).cgColor
+		hardHitAnimation.toValue = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.07).cgColor
+		hardHitAnimation.duration = 0.2
 		
 		view.acceptsTouchEvents = true
 		view.pressureConfiguration = NSPressureConfiguration(pressureBehavior: .primaryClick)
+		
+		if let recorder = recorder {
+			recorder.isMeteringEnabled = true
+			recorder.record()
+		}
 	}
 	
 	override func pressureChange(with event: NSEvent) {
@@ -60,12 +76,21 @@ class ViewController: NSViewController {
 	}
 	
 	override func touchesBegan(with event: NSEvent) {
+		let hardHit: Bool
+		if let recorder = recorder {
+			recorder.updateMeters()
+			print(recorder.averagePower(forChannel: 0), recorder.peakPower(forChannel: 0))
+			hardHit = recorder.averagePower(forChannel: 0) > -30
+		} else {
+			hardHit = false
+		}
+		
 		for touch in event.touches(matching: .began, in: nil) {
 			let x = (view.frame.width - fingerSize) * touch.normalizedPosition.x
 			let y = (view.frame.height - fingerSize) * touch.normalizedPosition.y
 			if let currentRegion = region(under: NSPoint(x: x + fingerSize/2, y: y + fingerSize/2)) {
 				drummers[currentRegion]?.play()
-				currentRegion.layer?.add(hitAnimation, forKey: "backgroundColor")
+				currentRegion.layer?.add(hardHit ? hardHitAnimation:hitAnimation, forKey: "backgroundColor")
 			}
 			
 			if let fingerView = fingerViews.subtracting(visibleFingers.values).first {

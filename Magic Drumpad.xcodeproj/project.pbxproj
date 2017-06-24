@@ -49,6 +49,7 @@
 		74447ACE1EF6AD7400C428B9 /* Magic_DrumpadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magic_DrumpadUITests.swift; sourceTree = "<group>"; };
 		74447AD01EF6AD7400C428B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7489205E1EF701800098ABDF /* ConcurrentPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentPlayer.swift; sourceTree = "<group>"; };
+		74F120A31EFF11A6003C8C7E /* Magic Drumpad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Magic Drumpad.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +101,7 @@
 		74447AAF1EF6AD7400C428B9 /* Magic Drumpad */ = {
 			isa = PBXGroup;
 			children = (
+				74F120A31EFF11A6003C8C7E /* Magic Drumpad.entitlements */,
 				74447AB01EF6AD7400C428B9 /* AppDelegate.swift */,
 				7489205E1EF701800098ABDF /* ConcurrentPlayer.swift */,
 				74447AB21EF6AD7400C428B9 /* ViewController.swift */,
@@ -197,6 +199,11 @@
 				TargetAttributes = {
 					74447AAC1EF6AD7400C428B9 = {
 						CreatedOnToolsVersion = 9.0;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					74447ABE1EF6AD7400C428B9 = {
 						CreatedOnToolsVersion = 9.0;
@@ -414,7 +421,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Magic Drumpad/Magic_Drumpad.entitlements";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7TD9A665TC;
 				INFOPLIST_FILE = "Magic Drumpad/Info.plist";
@@ -430,7 +436,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Magic Drumpad/Magic_Drumpad.entitlements";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7TD9A665TC;
 				INFOPLIST_FILE = "Magic Drumpad/Info.plist";

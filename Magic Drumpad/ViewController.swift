@@ -128,18 +128,26 @@ class ViewController: NSViewController {
 		}
 	}
 	
+	var mousePosition = CGPoint.zero
+	
 	func lockMouse() {
 		CGDisplayHideCursor(.init(0))
 		CGAssociateMouseAndMouseCursorPosition(0)
+		mousePosition = view.window?.convertToGlobal( NSEvent.mouseLocation() ) ?? .zero
 		CGWarpMouseCursorPosition(CGPoint(
 			x: NSEvent.mouseLocation().x,
-			y: view.window?.convertToGlobal(view.convert(lockButton.frame.origin, to: nil))?.y ?? 100
+			y: view.window?.convertToGlobal(
+				view.window?.convertToScreen(
+					view.convert(lockButton.frame, to: nil)
+				).origin ?? .zero
+			)?.y ?? 100
 		))
 		lockButton.keyEquivalent = escape
 		lockButton.title = "Press escape to unlock mouse"
 	}
 	
 	func unlockMouse() {
+		CGWarpMouseCursorPosition(mousePosition)
 		CGDisplayShowCursor(.init(0))
 		CGAssociateMouseAndMouseCursorPosition(1)
 		lockButton.title = "Lock mouse"
@@ -153,7 +161,7 @@ extension NSWindow {
 		if let screen = screen {
 			return CGPoint(
 				x: point.x,
-				y: screen.frame.maxY - convertToScreen(NSRect(origin: point, size: .zero)).origin.y
+				y: screen.frame.maxY - point.y
 			)
 		} else {
 			return nil

@@ -9,6 +9,8 @@
 import Cocoa
 import AVFoundation
 
+let escape = "\u{1b}"
+
 class ViewController: NSViewController {
 	@IBOutlet weak var fingerView1: NSBox!
 	@IBOutlet weak var fingerView2: NSBox!
@@ -18,6 +20,7 @@ class ViewController: NSViewController {
 	@IBOutlet weak var region1: NSBox!
 	@IBOutlet weak var region2: NSBox!
 	@IBOutlet weak var region3: NSBox!
+	@IBOutlet weak var lockButton: NSButton!
 	
 	var drummers = [NSBox: ConcurrentPlayer]()
 	var fingerSize: CGFloat = 25
@@ -79,7 +82,6 @@ class ViewController: NSViewController {
 		let hardHit: Bool
 		if let recorder = recorder {
 			recorder.updateMeters()
-			print(recorder.averagePower(forChannel: 0), recorder.peakPower(forChannel: 0))
 			hardHit = recorder.averagePower(forChannel: 0) > -30
 		} else {
 			hardHit = false
@@ -101,8 +103,6 @@ class ViewController: NSViewController {
 				fingerView.frame.origin.y = y
 			}
 		}
-		
-		NSCursor.setHiddenUntilMouseMoves(true)
 	}
 	
 	override func touchesMoved(with event: NSEvent) {
@@ -119,4 +119,27 @@ class ViewController: NSViewController {
 			visibleFingers.removeValue(forKey: touch.identity.hash)?.isTransparent = true
 		}
 	}
+	
+	@IBAction func lockMouse(_ sender: NSButton) {
+		if sender.state == NSControlStateValueOn {
+			lockMouse()
+		} else {
+			unlockMouse()
+		}
+	}
+	
+	func lockMouse() {
+		CGAssociateMouseAndMouseCursorPosition(0)
+		CGDisplayHideCursor(.init(0))
+		lockButton.keyEquivalent = escape
+		lockButton.title = "Press escape to unlock mouse"
+	}
+	
+	func unlockMouse() {
+		CGAssociateMouseAndMouseCursorPosition(1)
+		CGDisplayShowCursor(.init(0))
+		lockButton.title = "Lock mouse"
+		lockButton.keyEquivalent = ""
+	}
+	
 }

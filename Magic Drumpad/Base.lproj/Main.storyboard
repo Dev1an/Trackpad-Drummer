@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -673,6 +673,9 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="KUz-1E-1rN"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -762,6 +765,16 @@
                                 </view>
                                 <color key="fillColor" red="0.98369586470000003" green="0.98369586470000003" blue="0.98369586470000003" alpha="0.60332306339999997" colorSpace="calibratedRGB"/>
                             </box>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gm3-YX-CuU">
+                                <rect key="frame" x="201" y="19" width="79" height="17"/>
+                                <buttonCell key="cell" type="inline" title="Lock mouse" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nsF-If-q0J">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                    <font key="font" metaFont="smallSystemBold"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="lockMouse:" target="XfG-lQ-9wD" id="b8V-n6-MNJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="eAi-lg-W3O" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="4" id="044-u6-hhP"/>
@@ -776,7 +789,9 @@
                             <constraint firstItem="UlH-Fm-SOT" firstAttribute="top" secondItem="i6D-u0-ncL" secondAttribute="bottom" constant="4" id="ePs-1h-3Z5"/>
                             <constraint firstAttribute="trailing" secondItem="i6D-u0-ncL" secondAttribute="trailing" constant="4" id="i6c-TX-96F"/>
                             <constraint firstItem="eAi-lg-W3O" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="kmc-m9-RZC"/>
+                            <constraint firstAttribute="bottom" secondItem="gm3-YX-CuU" secondAttribute="bottom" constant="20" id="pYC-vx-9M1"/>
                             <constraint firstItem="i6D-u0-ncL" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="uF5-gg-nsR"/>
+                            <constraint firstItem="gm3-YX-CuU" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="w4x-6H-dc4"/>
                             <constraint firstItem="UlH-Fm-SOT" firstAttribute="top" secondItem="eAi-lg-W3O" secondAttribute="bottom" constant="4" id="xLD-Y5-DI7"/>
                         </constraints>
                     </view>
@@ -786,6 +801,7 @@
                         <outlet property="fingerView3" destination="h5L-47-BGF" id="5V5-DW-p1C"/>
                         <outlet property="fingerView4" destination="ZIC-lB-IG1" id="FgZ-gF-UVZ"/>
                         <outlet property="fingerView5" destination="q9h-Xm-FBj" id="uuy-KE-ofG"/>
+                        <outlet property="lockButton" destination="gm3-YX-CuU" id="6TT-nq-l13"/>
                         <outlet property="region1" destination="UlH-Fm-SOT" id="iMQ-tl-hBI"/>
                         <outlet property="region2" destination="i6D-u0-ncL" id="eRF-g7-hz3"/>
                         <outlet property="region3" destination="eAi-lg-W3O" id="b8g-Jw-xBl"/>

@@ -79,6 +79,7 @@ class ViewController: NSViewController {
 	}
 	
 	override func touchesBegan(with event: NSEvent) {
+		super.touchesBegan(with: event)
 		let hardHit: Bool
 		if let recorder = recorder {
 			recorder.updateMeters()
@@ -106,6 +107,7 @@ class ViewController: NSViewController {
 	}
 	
 	override func touchesMoved(with event: NSEvent) {
+		super.touchesMoved(with: event)
 		for touch in event.touches(matching: .moved, in: nil) {
 			if let fingerView = visibleFingers[touch.identity.hash] {
 				fingerView.frame.origin.x = (view.frame.width - fingerSize) * touch.normalizedPosition.x
@@ -115,6 +117,7 @@ class ViewController: NSViewController {
 	}
 	
 	override func touchesEnded(with event: NSEvent) {
+		super.touchesEnded(with: event)
 		for touch in event.touches(matching: [.ended, .cancelled], in: nil) {
 			visibleFingers.removeValue(forKey: touch.identity.hash)?.isTransparent = true
 		}

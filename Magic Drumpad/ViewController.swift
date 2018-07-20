@@ -45,10 +45,10 @@ class ViewController: NSViewController {
 		]
 		
 		hitAnimation.fromValue = #colorLiteral(red: 0, green: 0.2220619044, blue: 0.4813616071, alpha: 0.3024042694).cgColor
-		hitAnimation.toValue = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.07).cgColor
+		hitAnimation.toValue = CGColor(gray: 0.5, alpha: 0)
 		hitAnimation.duration = 0.2
 		hardHitAnimation.fromValue = #colorLiteral(red: 0.7373046875, green: 0, blue: 0, alpha: 0.5850022007).cgColor
-		hardHitAnimation.toValue = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.07).cgColor
+		hardHitAnimation.toValue = NSColor.quaternaryLabelColor.cgColor
 		hardHitAnimation.duration = 0.2
 		
 		view.acceptsTouchEvents = true

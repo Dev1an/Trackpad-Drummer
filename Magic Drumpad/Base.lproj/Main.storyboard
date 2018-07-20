@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14306.4"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -672,8 +672,8 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Drumpad" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
+                    <window key="window" title="Drumpad" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -704,7 +704,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <color key="borderColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.87067121479999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="fillColor" red="0.0" green="0.0" blue="0.0" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="fillColor" name="quaternaryLabelColor" catalog="System" colorSpace="catalog"/>
                             </box>
                             <box wantsLayer="YES" boxType="custom" borderWidth="0.0" cornerRadius="3" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="i6D-u0-ncL">
                                 <rect key="frame" x="242" y="139" width="234" height="131"/>
@@ -713,7 +713,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <color key="borderColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
-                                <color key="fillColor" red="0.0" green="0.0" blue="0.0" alpha="0.066846390845070422" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" name="quaternaryLabelColor" catalog="System" colorSpace="catalog"/>
                             </box>
                             <box wantsLayer="YES" boxType="custom" borderWidth="0.0" cornerRadius="3" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="eAi-lg-W3O">
                                 <rect key="frame" x="4" y="139" width="234" height="131"/>
@@ -722,7 +722,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <color key="borderColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
-                                <color key="fillColor" red="0.0" green="0.0" blue="0.0" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="fillColor" name="quaternaryLabelColor" catalog="System" colorSpace="catalog"/>
                             </box>
                             <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="12" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="der-H1-t4P">
                                 <rect key="frame" x="48" y="88" width="25" height="25"/>
@@ -731,7 +731,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <color key="fillColor" red="0.9836958646774292" green="0.9836958646774292" blue="0.9836958646774292" alpha="0.60332306338028174" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" name="Finger color"/>
                             </box>
                             <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="12" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gw6-IW-t3a">
                                 <rect key="frame" x="108" y="113" width="25" height="25"/>
@@ -740,7 +740,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <color key="fillColor" red="0.98369586470000003" green="0.98369586470000003" blue="0.98369586470000003" alpha="0.60332306339999997" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" name="Finger color"/>
                             </box>
                             <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="12" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5L-47-BGF">
                                 <rect key="frame" x="168" y="138" width="25" height="25"/>
@@ -749,7 +749,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <color key="fillColor" red="0.98369586470000003" green="0.98369586470000003" blue="0.98369586470000003" alpha="0.60332306339999997" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" name="Finger color"/>
                             </box>
                             <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="12" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZIC-lB-IG1">
                                 <rect key="frame" x="228" y="136" width="25" height="25"/>
@@ -758,7 +758,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <color key="fillColor" red="0.98369586470000003" green="0.98369586470000003" blue="0.98369586470000003" alpha="0.60332306339999997" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" name="Finger color"/>
                             </box>
                             <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="12" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q9h-Xm-FBj">
                                 <rect key="frame" x="287" y="124" width="25" height="25"/>
@@ -767,10 +767,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <color key="fillColor" red="0.98369586470000003" green="0.98369586470000003" blue="0.98369586470000003" alpha="0.60332306339999997" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" name="Finger color"/>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gm3-YX-CuU">
-                                <rect key="frame" x="201" y="19" width="79" height="17"/>
+                                <rect key="frame" x="201" y="19" width="79" height="18"/>
                                 <buttonCell key="cell" type="inline" title="Lock mouse" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nsF-If-q0J">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
@@ -819,7 +819,7 @@
         <scene sceneID="WMj-yG-hHa">
             <objects>
                 <windowController id="5R0-OS-hlL" sceneMemberID="viewController">
-                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aL0-FT-pX5">
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aL0-FT-pX5">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="174" height="59"/>
@@ -865,4 +865,9 @@
             <point key="canvasLocation" x="466" y="637"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="Finger color">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

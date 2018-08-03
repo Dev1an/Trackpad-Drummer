@@ -52,6 +52,7 @@ class ViewController: NSViewController {
 		hardHitAnimation.duration = 0.2
 		
 		view.acceptsTouchEvents = true
+		view.wantsRestingTouches = true
 		view.pressureConfiguration = NSPressureConfiguration(pressureBehavior: .primaryClick)
 		
 		if let recorder = recorder {

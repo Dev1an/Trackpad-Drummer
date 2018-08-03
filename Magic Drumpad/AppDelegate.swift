@@ -15,9 +15,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 	
 	func applicationWillResignActive(_ notification: Notification) {
-		if let controller = NSApplication.shared().windows.first?.contentViewController as? ViewController, controller.lockButton.state == NSOnState {
-			controller.unlockMouse()
-			controller.lockButton.state = NSOffState
+		let window = NSApplication.shared.windows.first
+		if let controller = window?.contentViewController as? ViewController {
+			if controller.lockButton.state == .on {
+				controller.unlockMouse()
+				controller.lockButton.state = .off
+			}
+			
+			for box in controller.fingerViews {
+				controller.hide(fingerBox: box)
+			}
+			controller.visibleFingers.removeAll()
 		}
 	}
 }

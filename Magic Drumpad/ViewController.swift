@@ -120,12 +120,18 @@ class ViewController: NSViewController {
 	override func touchesEnded(with event: NSEvent) {
 		super.touchesEnded(with: event)
 		for touch in event.touches(matching: [.ended, .cancelled], in: nil) {
-			visibleFingers.removeValue(forKey: touch.identity.hash)?.isTransparent = true
+			if let box = visibleFingers.removeValue(forKey: touch.identity.hash) {
+				hide(fingerBox: box)
+			}
 		}
 	}
 	
+	func hide(fingerBox: NSBox) {
+		fingerBox.isTransparent = true
+	}
+	
 	@IBAction func lockMouse(_ sender: NSButton) {
-		if sender.state == NSControlStateValueOn {
+		if sender.state == NSControl.StateValue.on {
 			lockMouse()
 		} else {
 			unlockMouse()
@@ -137,9 +143,9 @@ class ViewController: NSViewController {
 	func lockMouse() {
 		CGDisplayHideCursor(.init(0))
 		CGAssociateMouseAndMouseCursorPosition(0)
-		mousePosition = view.window?.convertToGlobal( NSEvent.mouseLocation() ) ?? .zero
+		mousePosition = view.window?.convertToGlobal( NSEvent.mouseLocation ) ?? .zero
 		CGWarpMouseCursorPosition(CGPoint(
-			x: NSEvent.mouseLocation().x,
+			x: NSEvent.mouseLocation.x,
 			y: view.window?.convertToGlobal(
 				view.window?.convertToScreen(
 					view.convert(lockButton.frame, to: nil)

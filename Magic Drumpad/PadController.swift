@@ -74,16 +74,7 @@ class PadController: NSViewController {
 			recorder.record()
 		}
 	}
-	
-	override func pressureChange(with event: NSEvent) {
-		fingerSize = CGFloat(event.pressure) * 20 + 25
-		for fingerView in fingerViews {
-			fingerView.frame.size.width = fingerSize
-			fingerView.frame.size.height = fingerSize
-			fingerView.cornerRadius = fingerSize/2
-		}
-	}
-	
+		
 	func region(under point: NSPoint) -> NSBox? {
 		for region in regionMap.keys {
 			if region.hitTest(point) != nil {

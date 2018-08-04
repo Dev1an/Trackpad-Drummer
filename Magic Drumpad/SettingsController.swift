@@ -8,6 +8,19 @@
 
 import Cocoa
 
+let soundDrummers = [
+    SoundPlayer(withSound: NSDataAsset(name: .init("drum1"))!.data),
+    SoundPlayer(withSound: NSDataAsset(name: .init("drum2"))!.data),
+    SoundPlayer(withSound: NSDataAsset(name: .init("drum3"))!.data)
+]
+let midiSender = try! MidiSender(name: "Magic Drumpad")
+let midiDrummers = [
+    MidiPlayer(note: 36, sender: midiSender),
+    MidiPlayer(note: 46, sender: midiSender),
+    MidiPlayer(note: 40, sender: midiSender)
+]
+var drummers: [Player] = soundDrummers
+
 class SettingsController: NSViewController {
 	@IBOutlet weak var midiSwitch: NSButton!
 	

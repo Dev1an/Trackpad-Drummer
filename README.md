@@ -15,7 +15,7 @@ Testet trackpads:
 - Written completely in Swift.
 - Outputs to speakers or to a MIDI device. 
 - Themed to support macOS Mojave Dark mode
-- <img src="Art/Notarized.jpg" width=50> by Apple
+- <img style="vertical-align: middle" src="Art/Notarized.jpg" width=50> by Apple
 
 ### Where to start
 - User interface: [Main.storyboard](Magic%20Drumpad/Base.lproj/Main.storyboard)

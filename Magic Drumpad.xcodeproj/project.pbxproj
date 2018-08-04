@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		74447AB11EF6AD7400C428B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74447AB01EF6AD7400C428B9 /* AppDelegate.swift */; };
-		74447AB31EF6AD7400C428B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74447AB21EF6AD7400C428B9 /* ViewController.swift */; };
+		74447AB31EF6AD7400C428B9 /* PadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74447AB21EF6AD7400C428B9 /* PadController.swift */; };
 		74447AB51EF6AD7400C428B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74447AB41EF6AD7400C428B9 /* Assets.xcassets */; };
 		74447AB81EF6AD7400C428B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74447AB61EF6AD7400C428B9 /* Main.storyboard */; };
 		74447AC41EF6AD7400C428B9 /* Magic_DrumpadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74447AC31EF6AD7400C428B9 /* Magic_DrumpadTests.swift */; };
 		74447ACF1EF6AD7400C428B9 /* Magic_DrumpadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74447ACE1EF6AD7400C428B9 /* Magic_DrumpadUITests.swift */; };
-		7489205F1EF701800098ABDF /* ConcurrentPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7489205E1EF701800098ABDF /* ConcurrentPlayer.swift */; };
+		7489205F1EF701800098ABDF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7489205E1EF701800098ABDF /* Player.swift */; };
+		74F187082115C5220070FB85 /* MidiSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F187072115C5220070FB85 /* MidiSender.swift */; };
+		74F1870A2115EF780070FB85 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F187092115EF780070FB85 /* SettingsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,7 @@
 		741F36A21EF86BC800F65538 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		74447AAD1EF6AD7400C428B9 /* Magic Drumpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magic Drumpad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74447AB01EF6AD7400C428B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		74447AB21EF6AD7400C428B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		74447AB21EF6AD7400C428B9 /* PadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadController.swift; sourceTree = "<group>"; };
 		74447AB41EF6AD7400C428B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74447AB71EF6AD7400C428B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		74447AB91EF6AD7400C428B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,8 +50,10 @@
 		74447ACA1EF6AD7400C428B9 /* Magic DrumpadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Magic DrumpadUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74447ACE1EF6AD7400C428B9 /* Magic_DrumpadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magic_DrumpadUITests.swift; sourceTree = "<group>"; };
 		74447AD01EF6AD7400C428B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7489205E1EF701800098ABDF /* ConcurrentPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentPlayer.swift; sourceTree = "<group>"; };
+		7489205E1EF701800098ABDF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		74F120A31EFF11A6003C8C7E /* Magic Drumpad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Magic Drumpad.entitlements"; sourceTree = "<group>"; };
+		74F187072115C5220070FB85 /* MidiSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiSender.swift; sourceTree = "<group>"; };
+		74F187092115EF780070FB85 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +107,10 @@
 			children = (
 				74F120A31EFF11A6003C8C7E /* Magic Drumpad.entitlements */,
 				74447AB01EF6AD7400C428B9 /* AppDelegate.swift */,
-				7489205E1EF701800098ABDF /* ConcurrentPlayer.swift */,
-				74447AB21EF6AD7400C428B9 /* ViewController.swift */,
+				7489205E1EF701800098ABDF /* Player.swift */,
+				74447AB21EF6AD7400C428B9 /* PadController.swift */,
+				74F187092115EF780070FB85 /* SettingsController.swift */,
+				74F187072115C5220070FB85 /* MidiSender.swift */,
 				74447AB41EF6AD7400C428B9 /* Assets.xcassets */,
 				74447AB61EF6AD7400C428B9 /* Main.storyboard */,
 				74447AB91EF6AD7400C428B9 /* Info.plist */,
@@ -269,9 +275,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7489205F1EF701800098ABDF /* ConcurrentPlayer.swift in Sources */,
-				74447AB31EF6AD7400C428B9 /* ViewController.swift in Sources */,
+				7489205F1EF701800098ABDF /* Player.swift in Sources */,
+				74F1870A2115EF780070FB85 /* SettingsController.swift in Sources */,
+				74447AB31EF6AD7400C428B9 /* PadController.swift in Sources */,
 				74447AB11EF6AD7400C428B9 /* AppDelegate.swift in Sources */,
+				74F187082115C5220070FB85 /* MidiSender.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	func applicationWillResignActive(_ notification: Notification) {
 		let window = NSApplication.shared.windows.first
-		if let controller = window?.contentViewController as? ViewController {
+		if let controller = window?.contentViewController as? PadController {
 			if controller.lockButton.state == .on {
 				controller.unlockMouse()
 				controller.lockButton.state = .off

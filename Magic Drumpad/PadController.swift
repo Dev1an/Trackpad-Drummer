@@ -11,7 +11,20 @@ import AVFoundation
 
 let escape = "\u{1b}"
 
-class ViewController: NSViewController {
+let soundDrummers = [
+	SoundPlayer(withSound: NSDataAsset(name: .init("drum1"))!.data),
+	SoundPlayer(withSound: NSDataAsset(name: .init("drum2"))!.data),
+	SoundPlayer(withSound: NSDataAsset(name: .init("drum3"))!.data)
+]
+let midiSender = try! MidiSender(name: "Magic Drumpad")
+let midiDrummers = [
+	MidiPlayer(note: 36, sender: midiSender),
+	MidiPlayer(note: 46, sender: midiSender),
+	MidiPlayer(note: 40, sender: midiSender)
+]
+var drummers: [Player] = soundDrummers
+
+class PadController: NSViewController {
 	@IBOutlet weak var fingerView1: NSBox!
 	@IBOutlet weak var fingerView2: NSBox!
 	@IBOutlet weak var fingerView3: NSBox!
@@ -20,9 +33,9 @@ class ViewController: NSViewController {
 	@IBOutlet weak var region1: NSBox!
 	@IBOutlet weak var region2: NSBox!
 	@IBOutlet weak var region3: NSBox!
+	var regionMap = [NSBox: Int]()
 	@IBOutlet weak var lockButton: NSButton!
 	
-	var drummers = [NSBox: ConcurrentPlayer]()
 	var fingerSize: CGFloat = 25
 	var fingerViews: Set<NSBox>!
 	var visibleFingers = [Int: NSBox]()
@@ -38,12 +51,7 @@ class ViewController: NSViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		fingerViews = [fingerView1, fingerView2, fingerView3, fingerView4, fingerView5]
-		drummers = [
-			region1: ConcurrentPlayer(withSound: NSDataAsset(name: .init("drum1"))!.data),
-			region2: ConcurrentPlayer(withSound: NSDataAsset(name: .init("drum2"))!.data),
-			region3: ConcurrentPlayer(withSound: NSDataAsset(name: .init("drum3"))!.data)
-		]
-		
+
 		hitAnimation.fromValue = #colorLiteral(red: 0, green: 0.2220619044, blue: 0.4813616071, alpha: 0.3024042694).cgColor
 		hitAnimation.toValue = CGColor(gray: 0.5, alpha: 0)
 		hitAnimation.duration = 0.2
@@ -54,6 +62,12 @@ class ViewController: NSViewController {
 		view.acceptsTouchEvents = true
 		view.wantsRestingTouches = true
 		view.pressureConfiguration = NSPressureConfiguration(pressureBehavior: .primaryClick)
+		
+		regionMap = [
+			region1: 0,
+			region2: 1,
+			region3: 2
+		]
 		
 		if let recorder = recorder {
 			recorder.isMeteringEnabled = true
@@ -71,7 +85,7 @@ class ViewController: NSViewController {
 	}
 	
 	func region(under point: NSPoint) -> NSBox? {
-		for region in drummers.keys {
+		for region in regionMap.keys {
 			if region.hitTest(point) != nil {
 				return region
 			}
@@ -92,8 +106,8 @@ class ViewController: NSViewController {
 		for touch in event.touches(matching: .began, in: nil) {
 			let x = (view.frame.width - fingerSize) * touch.normalizedPosition.x
 			let y = (view.frame.height - fingerSize) * touch.normalizedPosition.y
-			if let currentRegion = region(under: NSPoint(x: x + fingerSize/2, y: y + fingerSize/2)) {
-				drummers[currentRegion]?.play()
+			if let currentRegion = region(under: NSPoint(x: x + fingerSize/2, y: y + fingerSize/2)), let drummer = regionMap[currentRegion] {
+				drummers[drummer].play()
 				currentRegion.layer?.add(hardHit ? hardHitAnimation:hitAnimation, forKey: "backgroundColor")
 			}
 			
@@ -120,6 +134,13 @@ class ViewController: NSViewController {
 	override func touchesEnded(with event: NSEvent) {
 		super.touchesEnded(with: event)
 		for touch in event.touches(matching: [.ended, .cancelled], in: nil) {
+			let x = (view.frame.width - fingerSize) * touch.normalizedPosition.x
+			let y = (view.frame.height - fingerSize) * touch.normalizedPosition.y
+			if let currentRegion = region(under: NSPoint(x: x + fingerSize/2, y: y + fingerSize/2)) {
+				if let index = regionMap[currentRegion] {
+					drummers[index].stop()
+				}
+			}
 			if let box = visibleFingers.removeValue(forKey: touch.identity.hash) {
 				hide(fingerBox: box)
 			}

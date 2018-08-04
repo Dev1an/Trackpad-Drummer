@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14306.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -689,10 +690,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--Pad Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Magic_Drumpad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="PadController" customModule="Magic_Drumpad" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -770,7 +771,7 @@
                                 <color key="fillColor" name="Finger color"/>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gm3-YX-CuU">
-                                <rect key="frame" x="201" y="19" width="79" height="18"/>
+                                <rect key="frame" x="201" y="19" width="79" height="17"/>
                                 <buttonCell key="cell" type="inline" title="Lock mouse" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nsF-If-q0J">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
@@ -818,7 +819,7 @@
         <!--Window Controller-->
         <scene sceneID="WMj-yG-hHa">
             <objects>
-                <windowController id="5R0-OS-hlL" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="5R0-OS-hlL" sceneMemberID="viewController">
                     <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aL0-FT-pX5">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -836,10 +837,10 @@
             </objects>
             <point key="canvasLocation" x="529" y="356"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings Controller-->
         <scene sceneID="GGq-tu-a69">
             <objects>
-                <viewController id="a11-kg-Xol" sceneMemberID="viewController">
+                <viewController showSeguePresentationStyle="single" id="a11-kg-Xol" customClass="SettingsController" customModule="Magic_Drumpad" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="WoT-XT-swG">
                         <rect key="frame" x="0.0" y="0.0" width="158" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -850,6 +851,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="changeOutput:" target="a11-kg-Xol" id="W4y-oT-lxL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -859,10 +863,13 @@
                             <constraint firstAttribute="trailing" secondItem="1lg-Yv-Wai" secondAttribute="trailing" constant="20" id="nHo-ec-QZq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="midiSwitch" destination="1lg-Yv-Wai" id="VtY-Z7-fqb"/>
+                    </connections>
                 </viewController>
                 <customObject id="BJq-So-B7L" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="466" y="637"/>
+            <point key="canvasLocation" x="529" y="572"/>
         </scene>
     </scenes>
     <resources>

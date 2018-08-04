@@ -39,7 +39,7 @@ class MidiPlayer: Player {
 	}
 	
 	func play() {
-		try! sender.sendNoteOnMessage(noteNumber: note, velocity: 120)
+		try! sender.sendNoteOnMessage(noteNumber: note, velocity: 127)
 	}
 	
 	func stop() {

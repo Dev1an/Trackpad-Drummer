@@ -7,7 +7,7 @@ Download the [latest release](https://github.com/Dev1an/Trackpad-Drummer/release
 
 ## Compatibility
 
-Testet trackpads:
+Tested trackpads:
 - [x] MacBook Pro 15" Late 2013 (internal trackpad)
 - [x] Magic trackpad 2
 

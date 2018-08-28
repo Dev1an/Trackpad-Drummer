@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import AVFoundation
+import M5MultitouchSupport
 
 let escape = "\u{1b}"
 
@@ -20,23 +20,19 @@ class PadController: NSViewController {
 	@IBOutlet weak var region1: NSBox!
 	@IBOutlet weak var region2: NSBox!
 	@IBOutlet weak var region3: NSBox!
-	var regionMap = [NSBox: Int]()
+	var regionMap = [NSBox]()
 	@IBOutlet weak var lockButton: NSButton!
 	
+	var touchListener: M5MultitouchListener?
 	var fingerSize: CGFloat = 25
 	var fingerViews: Set<NSBox>!
-	var visibleFingers = [Int: NSBox]()
+	var visibleFingers = [Int32: NSBox]()
 	let hitAnimation = CABasicAnimation()
 	let hardHitAnimation = CABasicAnimation()
-	var recorder = try? AVAudioRecorder(url: URL(fileURLWithPath: "/dev/null"), settings: [
-		AVSampleRateKey: 4000.0,
-		AVFormatIDKey: Int(kAudioFormatAppleLossless),
-		AVNumberOfChannelsKey: 1,
-		AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-	])
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		touchListener = M5MultitouchManager.shared()?.addListener(callback: touchHandler)
 		fingerViews = [fingerView1, fingerView2, fingerView3, fingerView4, fingerView5]
 
 		hitAnimation.fromValue = #colorLiteral(red: 0, green: 0.2220619044, blue: 0.4813616071, alpha: 0.3024042694).cgColor
@@ -51,46 +47,45 @@ class PadController: NSViewController {
 		view.pressureConfiguration = NSPressureConfiguration(pressureBehavior: .primaryClick)
 		
 		regionMap = [
-			region1: 0,
-			region2: 1,
-			region3: 2
+			region1,
+			region2,
+			region3
 		]
-		
-		if let recorder = recorder {
-			recorder.isMeteringEnabled = true
-			recorder.record()
-		}
 	}
 		
-	func region(under point: NSPoint) -> NSBox? {
-		for region in regionMap.keys {
-			if region.hitTest(point) != nil {
-				return region
-			}
+	func drummer(for point: (x: Float, y: Float)) -> Int {
+		if point.y < 0.5 {
+			return 0
+		} else {
+			return point.x < 0.5 ?
+				2 : 1
 		}
-		return nil
 	}
 	
-	override func touchesBegan(with event: NSEvent) {
-		super.touchesBegan(with: event)
-		let hardHit: Bool
-		if let recorder = recorder {
-			recorder.updateMeters()
-			hardHit = recorder.averagePower(forChannel: 0) > -30
-		} else {
-			hardHit = false
-		}
-		
-		for touch in event.touches(matching: .began, in: nil) {
-			let x = (view.frame.width - fingerSize) * touch.normalizedPosition.x
-			let y = (view.frame.height - fingerSize) * touch.normalizedPosition.y
-			if let currentRegion = region(under: NSPoint(x: x + fingerSize/2, y: y + fingerSize/2)), let drummer = regionMap[currentRegion] {
-				drummers[drummer].play()
-				currentRegion.layer?.add(hardHit ? hardHitAnimation:hitAnimation, forKey: "backgroundColor")
+	func touchHandler(event: M5MultitouchEvent?) {
+		for object in event!.touches {
+			let touch = object as! M5MultitouchTouch
+			switch touch.state {
+				case .making: touchBegan(touch: touch)
+				case .touching: DispatchQueue.main.async{ self.touchMoved(touch: touch) }
+				case .leaving: DispatchQueue.main.async{ self.touchEnded(touch: touch) }
+				default: break
 			}
+		}
+	}
+	
+	func touchBegan(touch: M5MultitouchTouch) {
+		let size = min(touch.size, 2.5) / 2.5
+		let drummerIndex = drummer(for: (touch.posX, touch.posY))
+		drummers[drummerIndex].play(velocity: size)
+		
+		DispatchQueue.main.async {
+			let x = (self.view.frame.width - self.fingerSize) * CGFloat(touch.posX)
+			let y = (self.view.frame.height - self.fingerSize) * CGFloat(touch.posY)
+			self.regionMap[drummerIndex].layer?.add(size>0.8 ? self.hardHitAnimation:self.hitAnimation, forKey: "backgroundColor")
 			
-			if let fingerView = fingerViews.subtracting(visibleFingers.values).first {
-				visibleFingers[touch.identity.hash] = fingerView
+			if let fingerView = self.fingerViews.subtracting(self.visibleFingers.values).first {
+				self.visibleFingers[touch.identifier] = fingerView
 				fingerView.isTransparent = false
 				
 				fingerView.frame.origin.x = x
@@ -99,29 +94,18 @@ class PadController: NSViewController {
 		}
 	}
 	
-	override func touchesMoved(with event: NSEvent) {
-		super.touchesMoved(with: event)
-		for touch in event.touches(matching: .moved, in: nil) {
-			if let fingerView = visibleFingers[touch.identity.hash] {
-				fingerView.frame.origin.x = (view.frame.width - fingerSize) * touch.normalizedPosition.x
-				fingerView.frame.origin.y = (view.frame.height - fingerSize) * touch.normalizedPosition.y
-			}
+	func touchMoved(touch: M5MultitouchTouch) {
+		if let fingerView = visibleFingers[touch.identifier] {
+			fingerView.frame.origin.x = (view.frame.width - fingerSize) * CGFloat(touch.posX)
+			fingerView.frame.origin.y = (view.frame.height - fingerSize) * CGFloat(touch.posY)
 		}
 	}
 	
-	override func touchesEnded(with event: NSEvent) {
-		super.touchesEnded(with: event)
-		for touch in event.touches(matching: [.ended, .cancelled], in: nil) {
-			let x = (view.frame.width - fingerSize) * touch.normalizedPosition.x
-			let y = (view.frame.height - fingerSize) * touch.normalizedPosition.y
-			if let currentRegion = region(under: NSPoint(x: x + fingerSize/2, y: y + fingerSize/2)) {
-				if let index = regionMap[currentRegion] {
-					drummers[index].stop()
-				}
-			}
-			if let box = visibleFingers.removeValue(forKey: touch.identity.hash) {
-				hide(fingerBox: box)
-			}
+	func touchEnded(touch: M5MultitouchTouch) {
+		let index = drummer(for: (touch.posX, touch.posY))
+		drummers[index].stop()
+		if let box = visibleFingers.removeValue(forKey: touch.identifier) {
+			hide(fingerBox: box)
 		}
 	}
 	
@@ -163,6 +147,9 @@ class PadController: NSViewController {
 		lockButton.keyEquivalent = ""
 	}
 	
+	deinit {
+		M5MultitouchManager.shared()?.remove(touchListener)
+	}
 }
 
 extension NSWindow {

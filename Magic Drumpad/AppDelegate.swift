@@ -10,10 +10,6 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-	func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-		return true
-	}
-	
 	func applicationWillResignActive(_ notification: Notification) {
 		let window = NSApplication.shared.windows.first
 		if let controller = window?.contentViewController as? PadController {
@@ -27,5 +23,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			}
 			controller.visibleFingers.removeAll()
 		}
+	}
+	
+	func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+		return true
 	}
 }

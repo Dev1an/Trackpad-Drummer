@@ -9,8 +9,14 @@
 import AVFoundation
 
 protocol Player {
-	func play()
+	func play(velocity: Float)
 	func stop()
+}
+
+extension Player {
+	func play() {
+		play(velocity: 1)
+	}
 }
 
 class SoundPlayer: Player {
@@ -22,7 +28,7 @@ class SoundPlayer: Player {
 		}
 	}
 	
-	func play() {
+	func play(velocity: Float) {
 		players.first {!$0.isPlaying}? .play()
 	}
 	
@@ -38,8 +44,8 @@ class MidiPlayer: Player {
 		self.sender = sender
 	}
 	
-	func play() {
-		try! sender.sendNoteOnMessage(noteNumber: note, velocity: 127)
+	func play(velocity: Float) {
+		try! sender.sendNoteOnMessage(noteNumber: note, velocity: UInt8(velocity * 127))
 	}
 	
 	func stop() {

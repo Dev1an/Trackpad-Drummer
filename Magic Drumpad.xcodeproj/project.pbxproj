@@ -43,7 +43,6 @@
 		74447AB41EF6AD7400C428B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74447AB71EF6AD7400C428B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		74447AB91EF6AD7400C428B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		74447ABA1EF6AD7400C428B9 /* Magic_Drumpad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Magic_Drumpad.entitlements; sourceTree = "<group>"; };
 		74447ABF1EF6AD7400C428B9 /* Magic DrumpadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Magic DrumpadTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74447AC31EF6AD7400C428B9 /* Magic_DrumpadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magic_DrumpadTests.swift; sourceTree = "<group>"; };
 		74447AC51EF6AD7400C428B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,7 +113,6 @@
 				74447AB41EF6AD7400C428B9 /* Assets.xcassets */,
 				74447AB61EF6AD7400C428B9 /* Main.storyboard */,
 				74447AB91EF6AD7400C428B9 /* Info.plist */,
-				74447ABA1EF6AD7400C428B9 /* Magic_Drumpad.entitlements */,
 			);
 			path = "Magic Drumpad";
 			sourceTree = "<group>";
